@@ -1,0 +1,36 @@
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Youtubeコメントダウンローダー</title>
+  </head>
+  <body style="background-color: #F0F0F0;">
+    <div style="width:60%; margin-left:auto; margin-right:auto;">
+      <div style="text-align:center;">
+        <h1>Youtubeコメントダウンローダー</h1>
+      </div>
+      <div style="margin-top:2em;">
+        <h2>ダウンロード</h2>
+        <p>コメントをダウンロードする対象のチャンネルIDを指定して，実行ボタンを押してください。</p>
+        <p>UTF-8コードで作成されます。MS-Excelで開く際は拡張子を.csvから.txtに変更して開いてみてください。</p>
+        <form action="https://comments-dkvv35b6bq-an.a.run.app/" method="POST">
+          <input type="hidden" name="access_token" value="{access_token}" />
+          <label for="channel_id_text">チャンネルID</label>
+          <input id="channel_id_text" type="text" size="32" style="width: 30em;" name="channel_id" value="" /><br />
+          <div style="text-align:center; margin-top: 1em;">
+            <input id="submit_button" style="width:10em; height:1.5em; font-size: 1.5em; background-color:gray;" type="submit" name="btn_submit" value="実行" />
+          </div>
+        </form>
+        <p>
+          YoutubeのチャンネルIDについては，以下のページをご確認ください。@から始まるハンドルでは検索できません。<br />
+          <a target="_blank" href="https://support.google.com/youtube/answer/6180214">https://support.google.com/youtube/answer/6180214</a><br/>
+        </p>
+        <div style="color:red;">
+          {message}
+        </div>
+        <div style="font-size:1.5em; text-align:center;">
+           <a href="https://comments-dkvv35b6bq-an.a.run.app/">トップ</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

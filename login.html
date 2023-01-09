@@ -1,0 +1,22 @@
+<html lang="ja">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Youtubeコメントダウンローダー</title>
+  </head>
+  <body>
+    <h1>Youtubeコメントダウンローダー</h1>
+    <form id="form" action="https://comments-dkvv35b6bq-an.a.run.app/" method="POST">
+      <input type="hidden" name="code" value="{code}" />
+      <input type="hidden" name="grant_type" value="authorization_code" />
+      <input type="hidden" name="client_secret" value="{client_secret}" />
+      <input type="hidden" name="client_id" value="{client_id}" />
+      <input type="hidden" name="redirect_uri" value="https://comments-dkvv35b6bq-an.a.run.app/" />
+      <p>しばらくしても画面が切り替わらない場合は送信ボタンを押してください。</p>
+      <input type="submit" id="btn" name="送信" value="送信" />
+    </form>
+    <script type="text/javascript">
+      var form = document.getElementById("form"); 
+      form.submit();
+    </script>
+  </body>
+</html>
