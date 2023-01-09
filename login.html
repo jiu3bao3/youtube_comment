@@ -5,12 +5,12 @@
   </head>
   <body>
     <h1>Youtubeコメントダウンローダー</h1>
-    <form id="form" action="https://comments-dkvv35b6bq-an.a.run.app/" method="POST">
+    <form id="form" action="{redirect_uri}" method="POST">
       <input type="hidden" name="code" value="{code}" />
       <input type="hidden" name="grant_type" value="authorization_code" />
       <input type="hidden" name="client_secret" value="{client_secret}" />
       <input type="hidden" name="client_id" value="{client_id}" />
-      <input type="hidden" name="redirect_uri" value="https://comments-dkvv35b6bq-an.a.run.app/" />
+      <input type="hidden" name="redirect_uri" value="{redirect_uri}" />
       <p>しばらくしても画面が切り替わらない場合は送信ボタンを押してください。</p>
       <input type="submit" id="btn" name="送信" value="送信" />
     </form>

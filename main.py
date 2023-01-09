@@ -87,7 +87,7 @@ def handle_init_access():
   template = ''
   with open("./init.html", 'r') as f:
     template = f.read()
-  return template.format(client_id=os.environ.get('CLIENT_ID'), limit=os.environ.get('LIMIT'))
+  return template.format(client_id=os.environ.get('CLIENT_ID'), limit=os.environ.get('LIMIT'), redirect_uri=os.environ.get('REDIRECT_URI'))
 
 def handle_login(request):
   """
@@ -103,7 +103,8 @@ def handle_login(request):
     template = f.read()
   client_id = os.environ.get('CLIENT_ID')
   client_secret = os.environ.get('CLIENT_SECRET')
-  return template.format(client_id=client_id, client_secret=client_secret, code=request.args['code'])
+  redirect_uri = os.environ.get('REDIRECT_URI')
+  return template.format(client_id=client_id, client_secret=client_secret, code=request.args['code'], redirect_uri=redirect_uri)
 
 def get_tokens(request):
   """
@@ -116,7 +117,7 @@ def get_tokens(request):
       succes: 成功か否か，status_code : API応答のHTTPステータスコード，access_token : アクセストークン，refresh_token : リフレッシュトークン，message : メッセージ
   """
   params = { "code" : request.form['code'], "grant_type" : "authorization_code", "client_secret" : os.environ.get('CLIENT_SECRET'), \
-             "client_id" : os.environ.get('CLIENT_ID'), "redirect_uri" : "https://comments-dkvv35b6bq-an.a.run.app/" }
+             "client_id" : os.environ.get('CLIENT_ID'), "redirect_uri" : os.environ.get('REDIRECT_URI') }
   header = { "Content-Type" : "application/json" }
   response = requests.post("https://oauth2.googleapis.com/token", params=params, headers=header)
   if response.status_code == 200:
@@ -139,7 +140,7 @@ def handle_token(request):
   tokens = get_tokens(request)
   with open("./form.html", 'r') as f:
     template = f.read()
-    return template.format(access_token=tokens['access_token'], message=tokens['message'])
+    return template.format(access_token=tokens['access_token'], message=tokens['message'], redirect_uri=os.environ.get('REDIRECT_URI'))
 
 def execute_job(request):
   """
